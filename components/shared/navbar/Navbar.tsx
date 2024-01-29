@@ -2,6 +2,7 @@ import Link from 'next/link';
 import GlobalSearch from '../GlobalSearch';
 import MobileNav from './MobileNav';
 import Theme from './Theme';
+import { SignedIn, UserButton } from '@clerk/nextjs';
 
 
 const Navbar = () => {
@@ -23,7 +24,18 @@ const Navbar = () => {
         <Theme/>
 
         {/* User */}
-
+        <SignedIn>
+          <UserButton
+            afterSignOutUrl="/"
+            appearance={{
+              elements: { avatarBox: 'h-10 w-10' },
+              variables: {
+                colorPrimary: '#ff7000'
+              }
+            }}
+          />
+        </SignedIn>
+        
         {/* Mobile Nav */}
         <MobileNav />
       </div>

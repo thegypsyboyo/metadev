@@ -1,14 +1,13 @@
 'use client';
 
 import { sidebarLinks } from '@/constants/constants';
-// import { SignedOut, useAuth } from '@clerk/nextjs';
+import { SignedOut } from '@clerk/nextjs';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-// import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 
 const LeftSidebar = () => {
-  // const { userId } = useAuth();
   const pathname = usePathname();
 
   return (
@@ -19,8 +18,8 @@ const LeftSidebar = () => {
             (pathname.includes(item.route) && item.route.length > 1) ||
             pathname === item.route;
 
-          // profile
-
+          // profile / id;
+         
           return (
             <Link
               key={item.route}
@@ -51,7 +50,39 @@ const LeftSidebar = () => {
       </div>
 
       {/* Not logged User */}
+      <SignedOut>
+        <div className="flex flex-col gap-3">
+          {/* Log in */}
+          <Link href="/sign-in">
+            <Button className="small-medium btn-secondary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
+              <Image
+                src="/assets/icons/account.svg"
+                alt="log in"
+                width={20}
+                height={20}
+                className="invert-colors lg:hidden"
+              />
+              <span className="primary-text-gradient max-lg:hidden">
+                Log In
+              </span>
+            </Button>
+          </Link>
 
+          {/* Sign up */}
+          <Link href="/sign-up">
+            <Button className="small-medium light-border-2 btn-tertiary text-dark400_light900 min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
+              <Image
+                src="/assets/icons/sign-up.svg"
+                alt="sign up"
+                width={20}
+                height={20}
+                className="invert-colors lg:hidden"
+              />
+              <span className="max-lg:hidden">Sign Up</span>
+            </Button>
+          </Link>
+        </div>
+      </SignedOut>
     </aside>
   );
 };
