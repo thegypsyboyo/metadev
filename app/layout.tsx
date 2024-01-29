@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   description:
     'A community-driven platform for asking and answering programming questions. Get help, share knowledge, and collaborate with developers from around the world. Explore topics in web development, mobile app development, algorithms, data structure and more.',
   icons: '/assets/images/site-logo.svg',
-  // openGraph: {
-  //   images: '/assets/meta.jpeg'
-  // }
+  openGraph: {
+    images: '/assets/meta.jpeg'
+  }
 };
 
 export default function RootLayout({
